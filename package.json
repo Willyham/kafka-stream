@@ -1,0 +1,46 @@
+{
+  "name": "sequelize-client",
+  "description": "A sequelize database client",
+  "version": "1.0.1",
+  "author": "Willyham <willyd@uber.com>",
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "gitolite@code.uber.internal:u4b/sequelize-client.git"
+  },
+  "bugs": {
+    "url": "https://code.uberinternal.com/maniphest/task/create/",
+    "email": "willyd@uber.com"
+  },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "2.x"
+  },
+  "licenses": [],
+  "main": "index.js",
+  "dependencies": {
+    "prozess": "^0.7.3"
+  },
+  "devDependencies": {
+    "build-changelog": "^2.1.2",
+    "istanbul": "^0.3.5",
+    "lint-trap": "^0.4.10",
+    "opn": "^1.0.1",
+    "tap-spec": "^2.1.2",
+    "tape": "^3.0.3"
+  },
+  "scripts": {
+    "changelog-major": "build-changelog --major",
+    "changelog-minor": "build-changelog --minor",
+    "changelog-patch": "build-changelog --patch",
+    "test": "npm run lint -s && npm run cover -s",
+    "fast-test": "npm run lint && tape test/index.js | tap-spec",
+    "lint": "lint-trap --line-length=120",
+    "jenkins-install": "rm -rf ./node_modules; npm --registry=http://archive.uber.com/npm install",
+    "jenkins-jshint": "lint-trap --reporter=checkstyle > jshint.xml",
+    "jenkins-test": "npm run lint && istanbul cover --report cobertura --print none tape -- test/index.js | tee test/test.js.tap",
+    "cover": "istanbul cover --report cobertura --print detail tape -- test/index.js",
+    "view-cover": "istanbul report html && opn ./coverage/index.html"
+  },
+  "private": true
+}
