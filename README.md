@@ -2,6 +2,8 @@
 
 Node 0.10 Stream compatible kafka consumer
 
+WARNING: This is still experimental and should not be used in production.
+
 ## Overview
 
 This modules aims to provide a simple and stream compatible interface to Prozess' kafka Consumer.
@@ -39,4 +41,8 @@ myStream.start(function(err) {
 
 ## Development
 
+Pull requests are welcome.
+
+```
 npm test
+```
